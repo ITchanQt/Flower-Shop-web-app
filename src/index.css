@@ -118,3 +118,30 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes float-bubble {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-100px) scale(1);
+    opacity: 0;
+  }
+}
+
+.bubble-animation {
+  animation: float-bubble linear infinite;
+  will-change: transform;
+}
+
+.bubble-delay-1 {
+  animation-delay: -5s;
+}
+
+.bubble-delay-2 {
+  animation-delay: -10s;
+}
