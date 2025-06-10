@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Header from "./components/header";
 import { Button } from "@/components/ui/button";
 import FloatingBubbleBg from "@/components/floatingBubbleBg";
+import SmScreenHeaderContent from "./components/smScreenHeaderContent";
 
 const landingPage = () => {
   const [menuOpen, setMenuOpen] = useState(true);
@@ -14,13 +15,13 @@ const landingPage = () => {
     return "Good Night";
   };
   return (
-    <div>
+    <main className="relative pt-20">
       <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-      <section className="h-screen relative flex flex-col overflow-hidden bg-gradient-to-br from-[#faf7f2] to-[#ffeaa7]">
-        <FloatingBubbleBg/>
+      <section className="h-screen relative flex flex-col overflow-hidden bg-gradient-to-br from-[#faf7f2] to-[#ffeaa7] 2xl:container">
         <div
-          className={`absolute inset-0 
-            bg-[#faf7f2] 
+          className={` md:hidden
+            absolute inset-0 
+            bg-white 
             transform 
             transition-all 
             duration-500 
@@ -31,28 +32,31 @@ const landingPage = () => {
                 : "-translate-x-full opacity-0"
             }`}
         >
-          <p>Overlay content</p>
+          <SmScreenHeaderContent />
         </div>
-        <h1 className="text-center p-6 font-extrabold font-sans text-3xl bg-gradient-to-br from-[#ff6b9d] to-[#2d5016] bg-clip-text text-transparent">
-          {getGreeting()}
-        </h1>
-        <p className="text-[1rem] px-12 text-center">
-          Transform any moment into something magical with our handpicked,
-          premium flower arrangements crafted by expert florists.
-        </p>
-        <div className="flex flex-col mt-6 gap-2 items-center">
-          <Button className="w-[10rem] h-[3rem] rounded-full text-[1rem] bg-gradient-to-br from-[#ff6b9d] to-[#e74c3c]">
+        <FloatingBubbleBg />
+        <div className="lg:mx-52">
+          <h1 className="text-center leading-relaxed p-4 text-4xl mx-3 sm:mx-20 font-extrabold font-sans bg-gradient-to-br from-[#ff6b9d] to-[#2d5016] bg-clip-text text-transparent lg:text-6xl">
+            {getGreeting()}
+          </h1>
+          <p className="sm:text-lg leading-relaxed text-[#2c3e50] px-12 text-center md:text-xl md:px-6 lg:mx-10">
+            Transform any moment into something magical with our handpicked,
+            premium flower arrangements crafted by expert florists.
+          </p>
+        </div>
+        <div className="flex flex-col mt-6 sm:mt-10 gap-3 items-center md:flex-row md:justify-center">
+          <Button className="w-[10rem] h-[3rem] md:h-[4rem] rounded-full text-[1rem] bg-gradient-to-br from-[#ff6b9d] to-[#e74c3c]">
             Shop Flowers
           </Button>
           <Button
-            className="w-[12rem] h-[3rem] rounded-full text-[1rem] bg-transparent border-[#a8d5a3] border-2 mb-3"
+            className="w-[12rem] h-[3rem] md:h-[4rem] rounded-full text-[1rem] bg-transparent border-[#a8d5a3] border-2"
             variant="outline"
           >
             Same Day Delivery
           </Button>
         </div>
       </section>
-    </div>
+    </main>
   );
 };
 
