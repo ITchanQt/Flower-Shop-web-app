@@ -3,6 +3,14 @@ import Header from "./components/header";
 import { Button } from "@/components/ui/button";
 import FloatingBubbleBg from "@/components/floatingBubbleBg";
 import SmScreenHeaderContent from "./components/smScreenHeaderContent";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { ClipboardPenIcon, LeafIcon, Truck } from "lucide-react";
 
 const landingPage = () => {
   const [menuOpen, setMenuOpen] = useState(true);
@@ -14,6 +22,25 @@ const landingPage = () => {
     if (hour >= 17 && hour < 21) return "Evening Elegance with Fresh Blooms";
     return "Good Night";
   };
+  
+  const featureCards = [
+    {
+      icon: <Truck className="text-[#ff6b9d]" height={60} width={60}/>,
+      title: "Same Day Delivery",
+      description: "Order before 2 PM and receive your beautiful arrangements the same day. Perfect for last-minute surprises!"
+    },
+    {
+      icon: <LeafIcon className="text-[#ff6b9d]" height={60} width={60}/>,
+      title: "Always Fresh",
+      description: "We source our flowers daily from local growers and international farms to ensure maximum freshness and longevity."
+    },
+    {
+      icon: <ClipboardPenIcon className="text-[#ff6b9d]" height={60} width={60}/>,
+      title: "Custom Arrangements",
+      description: "Our expert florists create bespoke arrangements tailored to your preferences and special occasions."
+    }
+  ]
+
   return (
     <main className="relative pt-20">
       <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
@@ -54,6 +81,32 @@ const landingPage = () => {
           >
             Same Day Delivery
           </Button>
+        </div>
+      </section>
+      <section>
+        <div className="h-screen p-5">
+          <div className="mb-10">
+            <h2 className=" text-center text-[2rem] text-[#2c3e50] font-bold ">
+              Why Choose Bloom & Petal?
+            </h2>
+          </div>
+          <div className="grid max-w-6xl gap-5  mx-auto md:grid-cols-2 lg:grid-cols-3"> 
+            {featureCards.map((card, index) => (
+            <Card className="rounded-2xl" key={index}>
+              <CardContent>
+                <div className="rounded-full flex justify-center p-5 bg-gradient-to-br from-[#ffeaa7] to-[#faf7f2] w-fit mx-auto">
+                  {/* <Truck className="text-[#ff6b9d]" height={60} width={60}/> */}
+                  {card.icon}
+                </div>
+              </CardContent>
+
+              <CardHeader>
+                <CardTitle><h3 className="text-2xl font-bold text-center text-[#2c3e50] mb-5">{card.title}</h3></CardTitle>
+                <CardDescription className="text-center text-[1rem] leading-7">{card.description}</CardDescription>
+              </CardHeader>
+            </Card>
+            ))}
+          </div>
         </div>
       </section>
     </main>
